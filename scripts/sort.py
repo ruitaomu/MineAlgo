@@ -70,8 +70,7 @@ def resetBlocks(mc):
     mc.setBlock(posPopMachineX - 1, posPopMachineY + 2, z + 1, sortedBlocks[i])
     mc.setBlock(posPopMachineX - 1, posPopMachineY, z + 1, shuffledBlocks[i])
     
-    mc.postToChat("Goal: "+str(stepsGoal)+" steps, "+str(stepsGoal2)+" steps")
-    
+       
     return stepsGoal
 
 def checkBlocks(mc):
@@ -142,6 +141,7 @@ def onSortMachineEvent(mc, blockEvent):
             steps = 0
             shuffledBlocks = shuffleBlocks(blocks)
             goalSteps = resetBlocks(mc)
+            mc.postToChat("Goal: "+str(goalSteps)+" steps")
         else:
             return False
     else:
