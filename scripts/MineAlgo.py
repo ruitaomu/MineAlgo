@@ -6,6 +6,8 @@ import Temp2ndFloorMaze
 import time
 import random
 
+
+
 mc = Minecraft.create()
 
 hanoi.init(mc)

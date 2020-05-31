@@ -1,13 +1,16 @@
 from mcpi.minecraft import Minecraft
 import time
 import random
+import constants
 
 initBlocks = [133, 41, 152, 179, 57, 173, 155]
 sortedBlocks = []
 shuffledBlocks = []
-posPosMachineZList = [95, 97, 99, 101, 103, 105]
-posPopMachineX = -26
-posPopMachineY = 71
+posPopMachineX = constants.templeBasePosition_x + 7
+posPopMachineY = constants.templeBuildingPosition_y + 3
+posPopMachineZ = constants.templeBuildingPosition_z + 11
+posPosMachineZList = [posPopMachineZ, posPopMachineZ+2, posPopMachineZ+4, posPopMachineZ+6, posPopMachineZ+8, posPopMachineZ+10]
+
 steps = 0
 goalSteps = 0
 
@@ -134,10 +137,10 @@ def onSortMachineEvent(mc, blockEvent):
             changeBlocks(mc, blockEvent.pos.x - 1, blockEvent.pos.y, blockEvent.pos.z)
             steps += 1
             flagFinished = checkBlocks(mc)
-        elif blockEvent.pos.z == 91:
+        elif blockEvent.pos.z == posPopMachineZ - 4:
             steps = 0
             goalSteps = resetBlocks(mc)
-        elif blockEvent.pos.z == 89:
+        elif blockEvent.pos.z == posPopMachineZ - 6:
             steps = 0
             shuffledBlocks = shuffleBlocks(blocks)
             goalSteps = resetBlocks(mc)

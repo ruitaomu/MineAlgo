@@ -1,5 +1,15 @@
 from mcpi.minecraft import Minecraft
 import time
+import constants
+
+
+maze_wall_height = 7
+maze_x0 = constants.templeBasePosition_x + 1
+maze_x1 = maze_x0 + (constants.templeLength_x - 2) - 1
+maze_z0 = constants.templeBasePosition_z - int(constants.templeLength_z / 2 - 1) + 1
+maze_z1 = maze_z0 + (constants.templeLength_z - 2) - 1
+maze_floor_y = constants.templeBasePosition_y + 12
+maze_ceiling_y = maze_floor_y + maze_wall_height - 1
 
 maze = [[1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1],
         [0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0],
@@ -93,7 +103,17 @@ def isInsideTemple2ndFloorMaze(pos):
     y = pos.y
     z = pos.z
 
-    if x <= 22 and x >= -32 and y >= 81 and y <= 85 and z >= 56 and z <= 113:
+    if x <= maze_x1 and x >= maze_x0 and y > maze_floor_y and y < maze_ceiling_y and z >= maze_z0 and z <= maze_z1:
+        return True
+    else:
+        return False
+
+def isInsideTemple3ndFloorMaze(pos):
+    x = pos.x
+    y = pos.y
+    z = pos.z
+
+    if x <= maze_x1 and x >= maze_x0 and y > maze_ceiling_y+1 and z >= maze_z0 and z <= maze_z1:
         return True
     else:
         return False
@@ -105,19 +125,28 @@ def isInsideTemple2ndFloorMaze(pos):
 ##        for z in range(z0, z1+1):
 ##            if maze[x-x0+1][z-z0] == 1:
 ##                mc.setBlock(x, y, z, 89) # Glowstone
-    
+
+
+goMazePointX1 = maze_x1 - 1
+goMazePointZ1 = maze_z0 + 1
+goMazePointX2 = goMazePointX1
+goMazePointY2 = maze_z1 - 1
+
 def onTemp2ndFloorMazeEvent(mc, blockEvent):
     if isInsideTemple2ndFloorMaze(blockEvent.pos):
-        resetMaze(mc, 22, 56, -32, 113, 80, 8)
+        init(mc)
         mc.postToChat("Maze has been reset")
-        #time.sleep(3)
-        #goMaze(mc, 21, 57, 21, 112)
+    elif isInsideTemple3ndFloorMaze(blockEvent.pos):
+        init(mc)
+        mc.postToChat("Look down to see")
+        time.sleep(3)
+        goMaze(mc, goMazePointX1, goMazePointZ1, goMazePointX2, goMazePointY2)
 
 def init(mc):
-    resetMaze(mc, 22, 56, -32, 113, 80, 8)
+    resetMaze(mc, maze_x1, maze_z0, maze_x0, maze_z1, maze_floor_y, maze_wall_height)
 
 def goMaze(mc, xStart, zStart, xEnd, zEnd):
-    if stepMaze(mc, xStart, 86, zStart, xEnd, zEnd) == True:
+    if stepMaze(mc, xStart, maze_ceiling_y, zStart, xEnd, zEnd) == True:
         mc.postToChat("Done maze")
     else:
         mc.postToChat("No way out from maze!")
@@ -126,10 +155,10 @@ def stepMaze(mc, x, y, z, xEnd, zEnd):
     if x == xEnd and z == zEnd:
         return True
 
-    if x > 21 or x < -32:
+    if x > goMazePointX1 or x < maze_x0:
         return False
 
-    if z > 112 or z < 57:
+    if z > maze_z1 or z < maze_z0:
         return False
 
     block = mc.getBlock(x, y, z)

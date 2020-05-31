@@ -1,6 +1,7 @@
 from mcpi.minecraft import Minecraft
 from mcpi.minecraft import Vec3
 import time
+import constants
 
 blockSand = 12
 blockBase = 100
@@ -14,6 +15,10 @@ xPole = 0
 yPole = 0
 fromPole = -1
 toPole = -1
+
+resetButtonX = constants.templeBasePosition_x + 30
+resetButtonY = constants.templeBasePosition_y + 1
+resetButtonZ = constants.templeBasePosition_z
 
 def clearBase(mc, position, halfLength, height):
     x0 = position.x - halfLength
@@ -128,8 +133,8 @@ def resetHanoi(instMinecraft):
     mc = instMinecraft
     
     size = dishes
-    pos = Vec3(-3, 69, 84)
-    originPos = Vec3(-3, 69, 84)
+    pos = Vec3(resetButtonX, resetButtonY, resetButtonZ)
+    originPos = Vec3(resetButtonX, resetButtonY, resetButtonZ)
     pos.x += distance
     clearBase(mc, pos, size, dishes)
     pos.z -= size*2 + 1
@@ -160,7 +165,7 @@ def resetHanoi(instMinecraft):
         pos.y = yPole
 
     mc.setBlock(originPos.x, originPos.y-1, originPos.z, blockRedStone)
-    mc.setBlock(39, 70, 76, 0)
+##    mc.setBlock(39, 70, 76, 0)
 
 def waitUntilStandingOnRedSandStone(mc):
     print("Go to the Red Stone to start!")
@@ -203,15 +208,15 @@ def onHanoiMachineEvent(mc, blockEvent):
 
     clicked = -1
 
-    if x == -3 and y == 69 and z == 84:
+    if x == resetButtonX and y == resetButtonY and z == resetButtonZ:
         resetHanoi(mc)
-    elif x == 3 and y == 69:
+    elif x == resetButtonX + 6 and y == resetButtonY:
         print("hanoi button")
-        if z == 77:
+        if z == resetButtonZ - 7:
             clicked = 0
-        elif z == 84:
+        elif z == resetButtonZ:
             clicked = 1
-        elif z == 91:
+        elif z == resetButtonZ + 7:
             clicked = 2
         else:
             return False
@@ -230,7 +235,7 @@ def onHanoiMachineEvent(mc, blockEvent):
             toPole = -1
             if getPiledHeight(mc, 1) == dishes:
                 mc.setBlock(39, 70, 76, blockBeacon)
-                mc.postToChat("Congratulations!!!")
+##                mc.postToChat("Congratulations!!!")
             
     return True
 
