@@ -8,7 +8,7 @@ import random
 
 
 
-mc = Minecraft.create()
+mc = Minecraft.createMP("")
 
 hanoi.init(mc)
 sort.init(mc)
@@ -23,7 +23,7 @@ while True:
         # if Temp2ndFloorMaze.isInsideTemple2ndFloorMaze(pos) == True:
         #    if mc.getBlock(pos.x, pos.y-1, pos.z) == 206: # End Stone Brick(id:end_bricks)
         #        mc.setBlock(pos.x, pos.y-1, pos.z, 89)   # Glowstone
-        blockEvents = mc.events.pollBlockHits()
+        blockEvents = mc.player.pollBlockHits()
         for blockEvent in blockEvents:
             print(blockEvent)
             if sort.onSortMachineEvent(mc, blockEvent) == True:
