@@ -1,0 +1,37 @@
+groups:
+  Default:
+    options:
+      default: true
+    permissions:
+    - worldguard.build.block.interact.*
+    - worldguard.build.item.*
+    - worldguard.build.entity.*
+  Teacher:
+    options:
+      rank: '200'
+    permissions:
+    - worldguard.build.block.interact.*
+    - worldguard.build.item.*
+    - worldguard.build.entity.*
+  Admin:
+    options:
+      prefix: '"&0(&4Admin&0)&7'
+      rank: '1'
+    permissions:
+    - permissions.*
+    - worldguard.*
+    - minecraft.command.gamemode
+#users:
+  ########-####-####-####-############:
+#    group:
+#    - Admin
+#    options:
+#      name: ####
+#    permissions:
+#    - worldedit.*
+#  ########-####-####-####-############:
+#    group:
+#    - Teacher
+#    options:
+#      name: ####
+schema-version: 1
