@@ -13,6 +13,7 @@ groups:
     - worldguard.build.block.interact.*
     - worldguard.build.item.*
     - worldguard.build.entity.*
+    - minecraft.command.gamemode
   Admin:
     options:
       prefix: '"&0(&4Admin&0)&7'
