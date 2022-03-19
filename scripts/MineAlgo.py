@@ -5,16 +5,17 @@ import Temp2ndFloorMaze
 
 import time
 import random
+import sys
 
 
+mc = Minecraft.createMP("max1km", "mc.muruitao.cn")
 
-mc = Minecraft.createMP("")
+if (len(sys.argv) > 1 and "-r" == sys.argv[1]):
+    hanoi.init(mc)
+    sort.init(mc)
+    Temp2ndFloorMaze.init(mc)
 
-hanoi.init(mc)
-sort.init(mc)
-Temp2ndFloorMaze.init(mc)
-
-mc.postToChat("Your AlgoWorld has been initialized")
+    mc.postToChat("Your AlgoWorld has been initialized")
 
 while True:
     flagFinished = False

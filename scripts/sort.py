@@ -14,6 +14,9 @@ posPosMachineZList = [posPopMachineZ, posPopMachineZ+2, posPopMachineZ+4, posPop
 steps = 0
 goalSteps = 0
 
+def getShuffledArray():
+    return shuffledBlocks.copy()
+
 def insertionSort(arr): 
     steps = 0
     for i in range(1, len(arr)): 
@@ -76,6 +79,18 @@ def resetBlocks(mc):
        
     return stepsGoal
 
+def updateBlocks(mc, blocks):
+    if (len(blocks) != len(posPosMachineZList)+1):
+        return False
+
+    i = 0
+    for z in posPosMachineZList:
+        mc.setBlock(posPopMachineX - 1, posPopMachineY, z - 1, blocks[i])
+        i += 1
+    
+    mc.setBlock(posPopMachineX - 1, posPopMachineY, z + 1, blocks[i])
+    return True
+    
 def checkBlocks(mc):
 
     global steps
