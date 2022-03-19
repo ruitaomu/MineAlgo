@@ -234,8 +234,7 @@ def onHanoiMachineEvent(mc, blockEvent):
             fromPole = -1
             toPole = -1
             if getPiledHeight(mc, 1) == dishes:
-                mc.setBlock(39, 70, 76, blockBeacon)
-##                mc.postToChat("Congratulations!!!")
+                mc.postToChat("Congratulations!!!")
             
     return True
 
