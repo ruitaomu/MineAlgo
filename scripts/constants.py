@@ -1,6 +1,10 @@
-templeBuildingPosition_x = -37
-templeBuildingPosition_y = 68
-templeBuildingPosition_z = 84
+#templeBuildingPosition_x = -37
+#templeBuildingPosition_y = 68
+#templeBuildingPosition_z = 84
+
+templeBuildingPosition_x = 70
+templeBuildingPosition_y = 64
+templeBuildingPosition_z = 31
 
 
 templeBasePosition_x = templeBuildingPosition_x + 4
