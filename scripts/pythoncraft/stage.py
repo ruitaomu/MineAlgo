@@ -47,6 +47,9 @@ class Spot:
         else:
             return False
 
+    def getBlock(self, x, y, z):
+        return pythoncraft.world.pcMinecraft.getBlock(self.x + x, self.y + y, self.z + z)
+
     def isInRegion(self, deltaX, deltaY, deltaZ):
         if (deltaX >= self.minDeltaX and deltaX <= self.maxDeltaX
             and deltaY >= self.minDeltaY and deltaY <= self.maxDeltaY

@@ -7,12 +7,14 @@ from pythoncraft.spots.spot_megajump import SpotMegaJump
 from pythoncraft.spots.spot_lavabridge import SpotLavaBridge
 from pythoncraft.spots import MakeStairs
 from pythoncraft.spots import PutGlass
+from pythoncraft.spots import Pyramid
 
 spotList = {(1, 24, 89, 1, 24, 89, 1, 0, 89) : SpotHelloworld(),
             (0, 43, 1, 0, 1, 0, 0, 43, 0) : SpotMegaJump(),
             (20, 20, 20, 155, 155, 155, 24, 24, 24) : SpotLavaBridge(),
             (24, 128, 0, 24, 24, 128, 24, 128, 0) : MakeStairs.MagicSpot(),
-            (24, 95, 24, 24, 24, 24, 95, 24, 95) : PutGlass.MagicSpot()}
+            (24, 95, 24, 24, 24, 24, 95, 24, 95) : PutGlass.MagicSpot(),
+            (11, 11, 11, 24, 24, 24, 97, 97, 97) : Pyramid.MagicSpot()}
 
 _currentSpot = None
 

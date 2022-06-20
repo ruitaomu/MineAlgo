@@ -8,6 +8,10 @@ def setBlock(x, y, z, type, face = 0):
     spot = util.getStageSpot()
     spot.setBlock(x, y, z, type, face)
 
+def getBlock(x, y, z):
+    spot = util.getStageSpot()
+    return spot.getBlock(x, y, z)
+
 def jump(deltaX, deltaY, deltaZ):
     spot = util.getStageSpot()
     spot.jump(deltaX, deltaY, deltaZ)

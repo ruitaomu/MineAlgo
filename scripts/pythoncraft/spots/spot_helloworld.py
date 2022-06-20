@@ -6,5 +6,5 @@ class SpotHelloworld(Spot):
 
     def say(self, content):
         super().say(content)
-        if content == "hello":
+        if content == "Open World":
             self.done()
