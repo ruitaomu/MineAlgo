@@ -9,7 +9,7 @@ class MagicSpot(Spot):
         self.setRegion(-3, 0, 1, 3, 3, 7)
 
     def reset(self, blockId = 0):
-        World.pcMinecraft.setBlocks(self.x-3, self.y, self.z+1, self.x+3, self.y+3, self.z+7, blockId)
+        World.pcMinecraft.setBlocks(self.x-3, self.y, self.z+1, self.x+3, self.y+3, self.z+7, 0)
         World.pcMinecraft.setBlock(self.x , self.y+6, self.z+4, 24)
 
     def done(self):
