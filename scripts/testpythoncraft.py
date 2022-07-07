@@ -46,5 +46,69 @@ def pyramid():
 
     player.say("Done")
 
-util.getStageSpot().reset(1)
-megaJump()
+# <Maze>
+def maze():
+    x = 1
+    y = 0
+    z = 0
+    while player.getBlock(x, y-1, z) != 57: #Check if it's diamond. Stop when reach diamond block
+        player.setBlock(x, y, z, 41) # Gold
+        if player.getBlock(x+1, y, z) == 0:
+            x = x + 1
+        elif player.getBlock(x-1, y, z) == 0:
+            x = x -1
+        elif player.getBlock(x, y, z+1) == 0:
+            z = z + 1
+        elif player.getBlock(x, y, z-1) == 0:
+            z = z - 1
+        else:
+            player.say("I can't find the way!")
+            return
+
+    player.setBlock(x, y, z, 41) # Gold
+
+    player.say("Done")
+
+def stepMaze(x, z):
+    if player.getBlock(x, 0, z) == 57: #Check if it's diamond. Stop when reach diamond block
+        player.setBlock(x, 0, z, 66)
+        return True
+
+    block = player.getBlock(x, 0, z)
+    if block != 0:
+        return False
+    
+    player.setBlock(x, 0, z, 66) #66: Rail
+    
+    if stepMaze(x-1, z) == True:
+        return True
+
+    if stepMaze(x, z-1) == True:
+        return True
+
+    if stepMaze(x+1, z) == True:
+        return True
+
+    if stepMaze(x, z+1) == True:
+        return True
+
+    player.setBlock(x, 0, z, 0)
+
+    return False
+
+def railMaze():
+    if (stepMaze(1, 0) == False):
+        player.say("I can't find the way out")
+    else:
+        player.say("Let's go!")
+
+#player.say("Open World")
+#util.getStageSpot().reset()
+#makeStair()
+#lavaBridge()
+#pyramid()
+#util.getStageSpot().done()
+#megaJump()
+#putGlass()
+#maze()
+#railMaze()

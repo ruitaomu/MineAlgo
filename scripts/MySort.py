@@ -1,4 +1,4 @@
-import PythonClass
+from pythoncraft.codechallenge import Sort
 
 def bubbleSort(arr):
     n = len(arr)
@@ -55,7 +55,7 @@ def heapSort(arr):
     return steps
 
 #Program starts from here:
-pyc_sort = PythonClass.Sort()
+pyc_sort = Sort()
 
 #Get the unsorted array by PythonClass.array(), then pass it to my own sorting function
 steps = bubbleSort(pyc_sort.array())

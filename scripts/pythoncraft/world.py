@@ -8,13 +8,17 @@ from pythoncraft.spots.spot_lavabridge import SpotLavaBridge
 from pythoncraft.spots import MakeStairs
 from pythoncraft.spots import PutGlass
 from pythoncraft.spots import Pyramid
+from pythoncraft.spots import Maze
+from pythoncraft.spots import RailMaze
 
 spotList = {(1, 24, 89, 1, 24, 89, 1, 0, 89) : SpotHelloworld(),
             (0, 43, 1, 0, 1, 0, 0, 43, 0) : SpotMegaJump(),
             (20, 20, 20, 155, 155, 155, 24, 24, 24) : SpotLavaBridge(),
             (24, 128, 0, 24, 24, 128, 24, 128, 0) : MakeStairs.MagicSpot(),
             (24, 95, 24, 24, 24, 24, 95, 24, 95) : PutGlass.MagicSpot(),
-            (11, 11, 11, 24, 24, 24, 97, 97, 97) : Pyramid.MagicSpot()}
+            (11, 11, 11, 24, 24, 24, 97, 97, 97) : Pyramid.MagicSpot(),
+            (24, 24, 24, 24, 42, 169, 24, 24, 24) : Maze.MagicSpot(),
+            (24, 9, 24, 24, 24, 24, 9, 9, 24) : RailMaze.MagicSpot()}
 
 _currentSpot = None
 

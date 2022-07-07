@@ -1,4 +1,4 @@
-import PythonClass
+from pythoncraft.codechallenge import Hanoi
 
 a = 3
 b = 0
@@ -33,9 +33,9 @@ def move(poleFrom, poleTo, poleIdle, num):
             c += 1
 
 #Program starts from here:
-pyc_hanoi = PythonClass.Hanoi()
+pyc_hanoi = Hanoi(a)
 
 #Move dishes from Pole #1 to Pole #2, via Pole #3, total 3 dishes
-move(1, 2, 3, 3)
+move(1, 2, 3, a)
 
 pyc_hanoi.postToChat("Done!")

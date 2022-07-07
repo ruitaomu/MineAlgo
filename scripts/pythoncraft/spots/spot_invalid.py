@@ -25,5 +25,8 @@ class SpotInvalid(Spot):
     def setBlock(self, x, y, z, blockId, face):
         return False
 
+    def getBlock(self, x, y, z):
+        raise Exception("You are not standing on Magic Spot!")
+
     def isInRegion(self, deltaX, deltaY, deltaZ):
         return False

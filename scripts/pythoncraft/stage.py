@@ -23,7 +23,7 @@ class Spot:
     def done(self):
         pythoncraft.world.pcMinecraft.setBlock(self.x, self.y-2, self.z, 152)
 
-    def reset(self, blockId):
+    def reset(self, blockId = 1):
         pythoncraft.world.pcMinecraft.setBlock(self.x, self.y-2, self.z, blockId)
 
     def jump(self, deltaX, deltaY, deltaZ):
