@@ -6,6 +6,7 @@ class Spot:
         self.isSayEnabled = isSayEnabled
         self.isSetBlockEnabled = isSetBlockEnabled
         self.setRegion(0, 0, 0, -1, -1, -1)
+        self.allowedBlocks = []
 
     def setPos(self, x, y, z):
         self.x = x
@@ -19,6 +20,9 @@ class Spot:
         self.maxDeltaX = maxDeltaX
         self.maxDeltaY = maxDeltaY
         self.maxDeltaZ = maxDeltaZ
+
+    def setAllowedBlocks(self, blocks):
+        self.allowedBlocks = blocks
 
     def done(self):
         pythoncraft.world.pcMinecraft.setBlock(self.x, self.y-2, self.z, 152)
@@ -41,6 +45,10 @@ class Spot:
             return False
 
     def setBlock(self, x, y, z, blockId, face):
+        if blockId != 0 and len(self.allowedBlocks) > 0:
+            if (blockId in self.allowedBlocks) == False:
+                return False
+
         if (self.isSetBlockEnabled and self.isInRegion(x, y, z)):
             pythoncraft.world.pcMinecraft.setBlock(self.x + x, self.y + y, self.z + z, blockId, face)
             return True

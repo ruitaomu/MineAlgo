@@ -7,6 +7,7 @@ class MagicSpot(Spot):
     def __init__(self):
         super().__init__(False, True, True)
         self.setRegion(-2, 1, -2, 2, 1, 2)
+        super().setAllowedBlocks([41])
 
     def reset(self, blockId=0):
         super().reset(1)

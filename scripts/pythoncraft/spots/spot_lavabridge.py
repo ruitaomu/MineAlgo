@@ -5,6 +5,7 @@ class SpotLavaBridge(Spot):
     def __init__(self):
         super().__init__(False, True, True)
         self.setRegion(-4, 0, 1, 4, 0, 10)
+        super().setAllowedBlocks([24])
 
     def reset(self, blockId=0):
         pythoncraft.world.pcMinecraft.setBlocks(self.x + self.minDeltaX, self.y + self.minDeltaY, self.z + self.minDeltaZ, 

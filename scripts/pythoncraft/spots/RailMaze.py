@@ -62,6 +62,7 @@ class MagicSpot(Spot):
     def __init__(self):
         super().__init__(False, True, True)
         self.setRegion(1, 0, 0, 54, 0, 55)
+        super().setAllowedBlocks([66])
 
     def setBlock(self, x, y, z, blockId, face):
         if y != 0 or (blockId != 66 and blockId != 0): #66: Rail
