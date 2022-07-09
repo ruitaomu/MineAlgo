@@ -1,6 +1,5 @@
 from mcpi.minecraft import Minecraft
-import hanoi
-import sys
+import pythoncraft.hanoi as hanoi
         
 def onHanoiMachineEvent(mc, blockEvent):
     
@@ -40,21 +39,20 @@ def onHanoiMachineEvent(mc, blockEvent):
             
     return False
 
-mc = Minecraft.create()
+def start(num = 3):
 
-if len(sys.argv) > 1:
-    dishes = int(sys.argv[1])
-    if dishes != 3 and dishes != 4:
-        print("Invalid arguments. Use 3 as input.")        
-        dishes = 3
-else:
-    dishes = 3
+    if num != 3 and num != 4:
+        return
 
-hanoi.init(mc, dishes)
-flagFinished = False
-while flagFinished == False:
-    blockEvents = mc.player.pollBlockHits()
-    for blockEvent in blockEvents:
-        if onHanoiMachineEvent(mc, blockEvent) == True:
-            flagFinished = True
-            break
+    mc = Minecraft.create()
+
+    dishes = num
+
+    hanoi.init(mc, dishes)
+    flagFinished = False
+    while flagFinished == False:
+        blockEvents = mc.player.pollBlockHits()
+        for blockEvent in blockEvents:
+            if onHanoiMachineEvent(mc, blockEvent) == True:
+                flagFinished = True
+                break
